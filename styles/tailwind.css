@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ancent: #24484c;
+  --main: #004f32;
+  --light: #1cbe8e;
+  --soft: #e1ffeb;
+}
+
+body {
+  color: var(--ancent);
+}
+
+span:has(svg) {
+  display: block;
+}
+.nav {
+  box-shadow: rgba(50, 50, 93, 25) 0 50px 100px -20px;
+}
