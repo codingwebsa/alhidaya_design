@@ -54,7 +54,7 @@ const Navbar = () => {
         </div>
         <div className="relative flex flex-col px-4 h-full">
           <Link href="/">
-            <span className="flex items-center gap-1 text-xl font-semibold border border-b-[rgba(10,10,10,.2)] py-2">
+            <span className="flex items-center gap-1 text-xl font-semibold border-b border-b-[rgba(10,10,10,.2)] py-2">
               <span>
                 <HiHome size={22} />
               </span>
@@ -62,7 +62,7 @@ const Navbar = () => {
             </span>
           </Link>
           <Link href="/">
-            <span className="flex items-center gap-1 text-xl font-semibold border border-b-[rgba(10,10,10,.2)] py-2">
+            <span className="flex items-center gap-1 text-xl font-semibold border-b border-b-[rgba(10,10,10,.2)] py-2">
               <span>
                 <FaBookOpen size={20} />
               </span>
@@ -70,7 +70,7 @@ const Navbar = () => {
             </span>
           </Link>
           <Link href="/">
-            <span className="flex items-center gap-1 text-xl font-semibold border border-b-[rgba(10,10,10,.2)] py-2">
+            <span className="flex items-center gap-1 text-xl font-semibold border-b border-b-[rgba(10,10,10,.2)] py-2">
               <span>
                 <FaUserEdit size={22} />
               </span>
@@ -78,7 +78,7 @@ const Navbar = () => {
             </span>
           </Link>
           <Link href="/">
-            <span className="flex items-center gap-1 text-xl font-semibold border border-b-[rgba(10,10,10,.2)] py-2">
+            <span className="flex items-center gap-1 text-xl font-semibold border-b border-b-[rgba(10,10,10,.2)] py-2">
               <span>
                 <FaMosque size={22} />
               </span>
@@ -86,7 +86,7 @@ const Navbar = () => {
             </span>
           </Link>
           <Link href="/">
-            <span className="flex items-center gap-1 text-xl font-semibold border border-b-[rgba(10,10,10,.2)] py-2">
+            <span className="flex items-center gap-1 text-xl font-semibold border-b border-b-[rgba(10,10,10,.2)] py-2">
               <span>
                 <TbTruckDelivery size={22} />
               </span>
@@ -94,7 +94,7 @@ const Navbar = () => {
             </span>
           </Link>
           <Link href="/">
-            <span className="flex items-center gap-1 text-xl font-semibold border border-b-[rgba(10,10,10,.2)] py-2">
+            <span className="flex items-center gap-1 text-xl font-semibold border-b border-b-[rgba(10,10,10,.2)] py-2">
               <span>
                 <HiPhone size={22} />
               </span>
@@ -102,7 +102,7 @@ const Navbar = () => {
             </span>
           </Link>
           <Link href="/">
-            <span className="flex items-center gap-1 text-xl font-semibold border border-b-[rgba(10,10,10,.2)] py-2">
+            <span className="flex items-center gap-1 text-xl font-semibold border-b border-b-[rgba(10,10,10,.2)] py-2">
               <Image src={Avater} width={30} height={30} />
               <p>Account</p>
             </span>
