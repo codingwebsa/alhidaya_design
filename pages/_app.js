@@ -1,7 +1,14 @@
-import '../styles/tailwind.css'
+import { GlobalContextProvider } from "../contexts/GlobalContext";
+import "../styles/tailwind.css";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <GlobalContextProvider>
+        <Component {...pageProps} />
+      </GlobalContextProvider>
+    </>
+  );
 }
 
-export default MyApp
+export default MyApp;

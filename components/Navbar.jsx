@@ -1,116 +1,127 @@
+import React, { useContext, useState } from "react";
+import { MdShoppingBasket, MdAdd, MdLogout } from "react-icons/md";
+import { HiMenuAlt3 } from "react-icons/hi";
+import Avatar from "../assets/avatar.svg";
 import Link from "next/link";
-import { BiCartAlt } from "react-icons/bi";
-import { HiMenuAlt2, HiHome, HiPhone } from "react-icons/hi";
-import { FaBookOpen, FaUserEdit, FaMosque } from "react-icons/fa";
-import { MdCancel } from "react-icons/md";
-import { TbTruckDelivery } from "react-icons/tb";
-import Logo from "../assets/alhidayaLogo.png";
-import Avater from "../assets/avatar.svg";
 import Image from "next/image";
-import { useState } from "react";
+import { GlobalContext } from "../contexts/GlobalContext";
 
-const Navbar = () => {
-  const [menuOpened, setMenuOpened] = useState(false);
+const Header = () => {
+  const [isMenu, setIsMenu] = useState(false);
+  const { setIsCartOpen } = useContext(GlobalContext);
+
   return (
-    <>
-      <nav className="flex justify-between items-center px-3 z-30">
-        <span className="flex-1" onClick={() => setMenuOpened(true)}>
-          <HiMenuAlt2 size={28} />
-        </span>
-        <div className="flex flex-1 justify-center">
-          <Link href="/">
-            <Image src={Logo} width={120} objectFit="contain" />
-          </Link>
-        </div>
-        <div className="flex flex-1 items-center gap-2 justify-end">
-          <Link href="/">
-            <Image src={Avater} width={30} />
-          </Link>
-          <Link href="/">
-            <span>
-              <BiCartAlt size={28} />
-            </span>
-          </Link>
-        </div>
-      </nav>
+    <header className="fixed z-50 w-screen p-2 px-4 md:p-3 md:px-16 bg-primary">
+      {/* desktop & tablet */}
+      <div className="hidden md:flex w-full h-full items-center justify-between">
+        <Link href={"/"} className="flex items-center gap-2">
+          <p className="text-ancent text-xl font-bold"> Alhidaya</p>
+        </Link>
 
-      {/* menu */}
-      <div
-        className={`fixed w-screen  h-screen top-0 left-0 bg-[rgba(10,10,10,.5)] z-40 ${
-          !menuOpened && "hidden"
-        }`}
-        onClick={() => setMenuOpened(false)}
-      ></div>
-      <div
-        className={`menu fixed top-0  w-[280px] md:w-[330px] lg:w-[440px] h-screen bg-white z-50 ${
-          menuOpened ? "left-0" : "left-[-100vw]"
-        }`}
-      >
-        <div className="flex justify-between p-4">
-          <p className="text-xl font-bold text-light">Menu</p>
-          <span onClick={() => setMenuOpened(false)}>
-            <MdCancel size={28} color="#1cbe8e" />
-          </span>
-        </div>
-        <div className="relative flex flex-col px-4 h-full">
-          <Link href="/">
-            <span className="flex items-center gap-1 text-xl font-semibold border-b border-b-[rgba(10,10,10,.2)] py-2">
-              <span>
-                <HiHome size={22} />
-              </span>
-              <p>Home</p>
-            </span>
-          </Link>
-          <Link href="/">
-            <span className="flex items-center gap-1 text-xl font-semibold border-b border-b-[rgba(10,10,10,.2)] py-2">
-              <span>
-                <FaBookOpen size={20} />
-              </span>
-              <p>New Books</p>
-            </span>
-          </Link>
-          <Link href="/">
-            <span className="flex items-center gap-1 text-xl font-semibold border-b border-b-[rgba(10,10,10,.2)] py-2">
-              <span>
-                <FaUserEdit size={22} />
-              </span>
-              <p>Authors</p>
-            </span>
-          </Link>
-          <Link href="/">
-            <span className="flex items-center gap-1 text-xl font-semibold border-b border-b-[rgba(10,10,10,.2)] py-2">
-              <span>
-                <FaMosque size={22} />
-              </span>
-              <p>Islamic Books</p>
-            </span>
-          </Link>
-          <Link href="/">
-            <span className="flex items-center gap-1 text-xl font-semibold border-b border-b-[rgba(10,10,10,.2)] py-2">
-              <span>
-                <TbTruckDelivery size={22} />
-              </span>
-              <p>Track Order</p>
-            </span>
-          </Link>
-          <Link href="/">
-            <span className="flex items-center gap-1 text-xl font-semibold border-b border-b-[rgba(10,10,10,.2)] py-2">
-              <span>
-                <HiPhone size={22} />
-              </span>
-              <p>Contact Us</p>
-            </span>
-          </Link>
-          <Link href="/">
-            <span className="flex items-center gap-1 text-xl font-semibold border-b border-b-[rgba(10,10,10,.2)] py-2">
-              <Image src={Avater} width={30} height={30} />
-              <p>Account</p>
-            </span>
-          </Link>
+        <div className="flex items-center gap-6">
+          <ul className="flex items-center gap-16">
+            <li className="text-lg text-ancent font-semibold hover:text-light duration-100 transition-all ease-in-out cursor-pointer">
+              Home
+            </li>
+            <li className="text-lg text-ancent font-semibold hover:text-light duration-100 transition-all ease-in-out cursor-pointer">
+              Menu
+            </li>
+            <li className="text-lg text-ancent font-semibold hover:text-light duration-100 transition-all ease-in-out cursor-pointer">
+              About Us
+            </li>
+            <li className="text-lg text-ancent font-semibold hover:text-light duration-100 transition-all ease-in-out cursor-pointer">
+              Service
+            </li>
+          </ul>
+
+          <div className="relative flex items-center justify-center">
+            <MdShoppingBasket
+              className="text-ancent text-2xl  cursor-pointer"
+              onClick={() => setIsCartOpen(true)}
+            />
+            <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
+              <p className="text-xs text-white font-semibold">0</p>
+            </div>
+          </div>
+
+          <div className="relative">
+            <Image
+              src={Avatar}
+              className="w-5 min-w-[20px] h-5 min-h-[20px] cursor-pointer rounded-full"
+              alt="userprofile"
+              width={40}
+              height={40}
+              onClick={() => setIsMenu(!isMenu)}
+            />
+            {isMenu && (
+              <div className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0">
+                <p className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-ancent text-base">
+                  Logout <MdLogout />
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </>
+
+      {/* mobile */}
+      <div className="flex items-center justify-between md:hidden w-full h-full ">
+        <div className="relative flex items-center justify-center">
+          <MdShoppingBasket
+            className="text-ancent text-2xl  cursor-pointer"
+            onClick={() => setIsCartOpen(true)}
+          />
+          <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
+            <p className="text-xs text-white font-semibold">0</p>
+          </div>
+        </div>
+
+        <Link href={"/"} className="flex items-center gap-2">
+          <p className="text-ancent text-xl font-bold cursor-pointer">
+            Alhidaya
+          </p>
+        </Link>
+
+        <div className="relative">
+          <HiMenuAlt3 size={28} onClick={() => setIsMenu(!isMenu)} />
+          {isMenu && (
+            <div className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0">
+              <ul className="flex flex-col ">
+                <li
+                  className="text-base text-ancent font-semibold hover:text-light duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
+                  onClick={() => setIsMenu(false)}
+                >
+                  Home
+                </li>
+                <li
+                  className="text-base text-ancent font-semibold hover:text-light duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
+                  onClick={() => setIsMenu(false)}
+                >
+                  Menu
+                </li>
+                <li
+                  className="text-base text-ancent font-semibold hover:text-light duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
+                  onClick={() => setIsMenu(false)}
+                >
+                  About Us
+                </li>
+                <li
+                  className="text-base text-ancent font-semibold hover:text-light duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
+                  onClick={() => setIsMenu(false)}
+                >
+                  Service
+                </li>
+              </ul>
+
+              <p className="m-2 p-2 rounded-md shadow-md flex items-center justify-center bg-gray-200 gap-3 cursor-pointer hover:bg-gray-300 transition-all duration-100 ease-in-out text-ancent text-base">
+                Logout <MdLogout />
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
   );
 };
 
-export default Navbar;
+export default Header;
