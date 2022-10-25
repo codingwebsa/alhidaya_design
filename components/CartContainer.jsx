@@ -4,21 +4,45 @@ import { RiRefreshFill } from "react-icons/ri";
 import EmptyCart from "../assets/emptyCart.svg";
 import { GlobalContext } from "../contexts/GlobalContext";
 import CartItem from "./CartItem";
+import { motion } from "framer-motion";
 
 const CartContainer = () => {
   const [flag, setFlag] = useState(1);
   const [tot, setTot] = useState(0);
   const { setIsCartOpen } = useContext(GlobalContext);
 
-  const item = {
-    title: "Abar Vinno Kisu Hok",
-    imageURL: "https://media.graphassets.com/RbG1mJFjSMaccLzUad7F",
-    price: 390,
-  };
+  const items = [
+    {
+      title: "Abar Vinno Kisu Hok",
+      imageURL: "https://media.graphassets.com/RbG1mJFjSMaccLzUad7F",
+      price: 390,
+    },
+    {
+      title: "Sirat",
+      imageURL: "https://media.graphassets.com/aREn4VA3S3adSsSUIHoQ",
+      price: 280,
+    },
+    {
+      title: "Amar Nobi",
+      imageURL: "https://media.graphassets.com/9GujCa4FTPmmDKsYZXEp",
+      price: 120,
+    },
+    {
+      title: "The Caring Wifes",
+      imageURL: "https://media.graphassets.com/jNsONhqERbKKvct7YfZF",
+      price: 330,
+    },
+  ];
 
   return (
-    <div className="fixed top-0 right-0 w-full md:w-375 h-screen bg-white drop-shadow-md flex flex-col z-[101]">
-      <div className="w-full flex items-center justify-between p-4 cursor-pointer">
+    <motion.div
+      className="fixed top-0 right-0 w-full md:w-375 h-screen bg-white drop-shadow-md flex flex-col z-[101]"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <div className="w-full flex items-center justify-between py-2 px-4 cursor-pointer">
         <div onClick={() => setIsCartOpen(false)}>
           <MdOutlineKeyboardBackspace className="text-textColor text-3xl" />
         </div>
@@ -32,9 +56,11 @@ const CartContainer = () => {
       {/* bottom section */}
       <div className="w-full h-full bg-cartBg rounded-t-[2rem] flex flex-col">
         {/* cart Items section */}
-        <div className="w-full h-340 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none scrollbar-hide">
+        <div className="w-full h-340 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-hide">
           {/* cart Item */}
-          <CartItem item={item} setFlag={setFlag} flag={flag} />
+          {items.map((item, i) => (
+            <CartItem key={i} item={item} setFlag={setFlag} flag={flag} />
+          ))}
         </div>
 
         {/* cart total section */}
@@ -69,7 +95,7 @@ const CartContainer = () => {
             Add some items to your cart
           </p>
         </div> */}
-    </div>
+    </motion.div>
   );
 };
 

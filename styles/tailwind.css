@@ -9,7 +9,7 @@
   --soft: #e1ffeb;
 }
 * {
-  transition: all 0.3s;
+  transition: all 0.1s;
 }
 
 body {

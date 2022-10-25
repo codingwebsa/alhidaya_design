@@ -69,6 +69,9 @@ module.exports = {
         main: '#004f32',
         ancent: '#24484c',
       },
+      fontFamily: {
+        'nunito': ['nunito']
+      }
     },
   },
   plugins: [require('tailwind-scrollbar-hide')],

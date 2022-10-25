@@ -10,6 +10,7 @@ export default function Home() {
     <div className="scrollbar-hide">
       <Head>
         <title>Alhidaya</title>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
       </Head>
       <Navbar />
       {isCartOpen && <CartContainer />}

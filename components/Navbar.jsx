@@ -15,7 +15,7 @@ const Header = () => {
       {/* desktop & tablet */}
       <div className="hidden md:flex w-full h-full items-center justify-between">
         <Link href={"/"} className="flex items-center gap-2">
-          <p className="text-ancent text-xl font-bold"> Alhidaya</p>
+          <p className="text-ancent text-xl font-bold font-nunito">Alhidaya</p>
         </Link>
 
         <div className="flex items-center gap-6">
@@ -66,11 +66,11 @@ const Header = () => {
 
       {/* mobile */}
       <div className="flex items-center justify-between md:hidden w-full h-full ">
-        <div className="relative flex items-center justify-center">
-          <MdShoppingBasket
-            className="text-ancent text-2xl  cursor-pointer"
-            onClick={() => setIsCartOpen(true)}
-          />
+        <div
+          className="relative flex items-center justify-center"
+          onClick={() => setIsCartOpen(true)}
+        >
+          <MdShoppingBasket className="text-ancent text-2xl  cursor-pointer" />
           <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
             <p className="text-xs text-white font-semibold">0</p>
           </div>
