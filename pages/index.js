@@ -1,5 +1,7 @@
 import Head from "next/head";
 import { useContext } from "react";
+import Banner from "../components/Banner";
+import Booksec from "../components/Booksec";
 import CartContainer from "../components/CartContainer";
 import Navbar from "../components/Navbar";
 import { GlobalContext } from "../contexts/GlobalContext";
@@ -13,6 +15,8 @@ export default function Home() {
         <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
       </Head>
       <Navbar />
+      <Banner />
+      <Booksec title='Popular' />
       {isCartOpen && <CartContainer />}
     </div>
   );
