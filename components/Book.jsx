@@ -6,10 +6,10 @@ const Book = ({ data }) => {
       {data && (
         <Image
           src={data.imgUrl}
-          width={200}
-          height={270}
+          width={140}
+          height={170}
           objectFit="cover"
-          className="rounded-lg"
+          className="rounded-lg drop-shadow-md"
         />
       )}
     </div>

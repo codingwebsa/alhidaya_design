@@ -3,6 +3,7 @@ import { useContext } from "react";
 import Banner from "../components/Banner";
 import Booksec from "../components/Booksec";
 import CartContainer from "../components/CartContainer";
+import HomeCategory from "../components/HomeCategory";
 import Navbar from "../components/Navbar";
 import { GlobalContext } from "../contexts/GlobalContext";
 
@@ -16,6 +17,7 @@ export default function Home() {
       </Head>
       <Navbar />
       <Banner />
+      <HomeCategory/>
       <Booksec title='Popular' />
       {isCartOpen && <CartContainer />}
     </div>
