@@ -38,8 +38,3 @@ span:has(svg) {
   gap: 0.5rem;
   place-items: center;
 }
-.HOMECATEGORY > span > img::after {
-  content: attr("data-category");
-  position: absolute;
-  top: 0;
-}
