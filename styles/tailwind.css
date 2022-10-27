@@ -8,9 +8,6 @@
   --light: #1cbe8e;
   --soft: #e1ffeb;
 }
-* {
-  transition: all 0.1s;
-}
 
 body {
   color: var(--ancent);
