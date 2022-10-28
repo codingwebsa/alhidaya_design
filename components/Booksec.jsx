@@ -107,7 +107,7 @@ const Booksec = ({ title }) => {
       {title ? (
         <h2 className="text-2xl font-bold leading-10 pl-4 py-2">{title}</h2>
       ) : null}
-      <div className="BOOKSEC px-4">
+      <div className="BOOKSEC pb-7 px-4">
         {data?.map((book, i) => (
           <Book data={book} key={i} />
         ))}

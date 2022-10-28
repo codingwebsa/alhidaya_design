@@ -6,12 +6,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundColor :{
-        soft: '#e1ffeb',
-        light: '#1cbe8e',
-        main: '#004f32',
-        ancent: '#24484c',
-      },
       width: {
         150: "150px",
         190: "190px",
@@ -67,11 +61,12 @@ module.exports = {
         soft: '#e1ffeb',
         light: '#1cbe8e',
         main: '#004f32',
-        ancent: '#24484c',
+        ancent: '#0e1c25',
       },
       fontFamily: {
         'nunito': ['nunito'],
-        'bangla': ['Bangla Font']
+        'bangla': ['Bangla Font'],
+        'title': ['Title Font']
       }
     },
   },
