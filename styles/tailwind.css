@@ -12,6 +12,10 @@
   background: var(--ancent);
   color: var(--soft);
 }
+@font-face {
+  src: url("../assets//font/font-one.ttf");
+  font-family: "Bangla Font";
+}
 body {
   color: var(--ancent);
   overflow-x: hidden;
@@ -26,12 +30,23 @@ span:has(svg) {
 .nav {
   box-shadow: rgba(50, 50, 93, 25) 0 50px 100px -20px;
 }
-.BOOKSEC {
+/* .BOOKSEC {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 0.5rem;
   place-items: center;
+} */
+.BOOKSEC {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
+.BOOKSEC > article {
+  flex: 1 1 140px;
+  max-width: 180px;
+  margin: 0 auto;
+}
+
 .HOMECATEGORY {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));

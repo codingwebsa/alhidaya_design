@@ -5,6 +5,7 @@ import Avatar from "../assets/avatar.svg";
 import Link from "next/link";
 import Image from "next/image";
 import { GlobalContext } from "../contexts/GlobalContext";
+import AlhidayaLogo from "../assets/alhidayaLogo.png";
 
 const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
@@ -15,7 +16,11 @@ const Header = () => {
       {/* desktop & tablet */}
       <div className="hidden md:flex w-full h-full items-center justify-between">
         <Link href={"/"} className="flex items-center gap-2">
-          <p className="text-ancent text-xl font-bold">Alhidaya</p>
+          {/* <p className="text-ancent text-xl font-bold">Alhidaya</p> */}
+          <span className="flex gap-2 items-center">
+            <Image src="/favicon.ico" width={30} height={30} />
+            <p className="text-xl font-extrabold font-bangla">আল হিদায়া</p>
+          </span>
         </Link>
 
         <div className="flex items-center gap-6">
@@ -77,9 +82,7 @@ const Header = () => {
         </div>
 
         <Link href={"/"} className="flex items-center gap-2">
-          <p className="text-ancent text-xl font-bold cursor-pointer">
-            Alhidaya
-          </p>
+          <Image src={AlhidayaLogo} width={120} objectFit="contain" />
         </Link>
 
         <div className="relative">

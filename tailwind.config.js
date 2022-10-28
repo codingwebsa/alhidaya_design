@@ -70,9 +70,10 @@ module.exports = {
         ancent: '#24484c',
       },
       fontFamily: {
-        'nunito': ['nunito']
+        'nunito': ['nunito'],
+        'bangla': ['Bangla Font']
       }
     },
   },
-  plugins: [require('tailwind-scrollbar-hide')],
+  plugins: [ require('@tailwindcss/line-clamp'), require('tailwind-scrollbar-hide')],
 }
