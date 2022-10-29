@@ -1,5 +1,89 @@
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useContext, useState } from "react";
+import { MdOutlineKeyboardBackspace, MdShoppingBasket } from "react-icons/md";
+import CartContainer from "../../components/CartContainer";
+import { GlobalContext } from "../../contexts/GlobalContext";
+
 const BookPage = ({ data }) => {
-  return <h1>{JSON.stringify(data)}</h1>;
+  const { setIsCartOpen, isCartOpen } = useContext(GlobalContext);
+  const [readmore, setReadmore] = useState(false);
+  const router = useRouter()
+
+  return (
+    <>
+      <nav className="flex justify-between p-5 py-4">
+        <span onClick={()=> router.push('/')}>
+          <MdOutlineKeyboardBackspace size={30} />
+        </span>
+        <div
+          className="relative flex items-center justify-center"
+          onClick={() => setIsCartOpen(true)}
+        >
+          <MdShoppingBasket className="text-ancent text-2xl  cursor-pointer" />
+          <div className=" absolute -top-3 -right-3 w-5 h-5 rounded-full bg-light flex items-center justify-center">
+            <p className="text-xs text-white font-semibold">0</p>
+          </div>
+        </div>
+      </nav>
+      <main className="relative w-full flex justify-center py-2 pb-20">
+        <div className="flex flex-col items-center gap-8">
+          <div className="relative w-full h-420 rounded-lg overflow-hidden shadow-xl">
+            <Image
+              src={data.imgUrl}
+              layout="fill"
+              objectFit="cover"
+              placeholder="blur"
+              blurDataURL={data.imgUrl}
+              className='rounded-lg'
+              quality={25}
+            />
+          </div>
+          <div className="max-w-[90%] flex flex-col">
+            <span className="text-3xl mb-4">{data.name}</span>
+            {data.discountPrice ? (
+              <span className="flex gap-2 text-2xl">
+                ৳ {data.discountPrice}
+                <span>
+                  <s className="text-xl">৳ {data.price}</s>
+                </span>
+              </span>
+            ) : (
+              <span>{data.price}</span>
+            )}
+            <span className="font-medium">
+              লেখক: <Link href={`/`}>{data.author}</Link>
+            </span>
+            <span className="font-medium">
+              প্রকাশনায়: <Link href={`/`}>ওয়াফি পাবলিকেশন</Link>
+            </span>
+            <span className="font-medium">
+              বিষয়: <Link href={`/`}>{data.category}</Link>
+            </span>
+            <span className="font-medium">
+              {readmore ? data.excerpt : data.description.slice(0, 200)}
+              <span
+                onClick={() => setReadmore(!readmore)}
+                style={{ fontWeight: "bold", cursor: "pointer" }}
+              >
+                {readmore ? "...show less" : "...Read More"}
+              </span>
+            </span>
+            <div className="">
+              <div className="">
+                <span>-</span> 1 <span>+</span>
+              </div>
+              <button class="" role="button">
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+      {isCartOpen && <CartContainer />}
+    </>
+  );
 };
 
 export default BookPage;
@@ -158,10 +242,9 @@ export const getStaticProps = async ({ params }) => {
   ];
 
   const singlebookData = data.filter((book) => book.slug == slug);
-  console.log(singlebookData);
   return {
     props: {
-      data: singlebookData,
+      data: singlebookData[0],
     },
   };
 };

@@ -41,7 +41,7 @@ const Book = ({ data }) => {
           </div>
         )}
         <button
-          className="font-sans font-semibold bg-soft mt-auto p-2 rounded-lg drop-shadow-md my-2 active:scale-[.95] lg:hover:bg-light transition-all duration-300"
+          className="font-sans font-semibold bg-slate-100 mt-auto p-2 rounded-lg drop-shadow-md my-2 active:scale-[.95] lg:hover:bg-slate-200 transition-all duration-300"
           role="add-to-cart"
         >
           Add to Cart

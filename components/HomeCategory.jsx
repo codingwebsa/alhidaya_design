@@ -30,7 +30,7 @@ const HomeCategory = () => {
         {data?.map((category, i) => (
           <div className="relative flex rounded-xl overflow-hidden" key={i}>
             <Image src={category.imgURL} className="rounded-xl" quality={50} />
-            <p className="absolute bottom-0 left-0 text-md md:text-lg font-bold text-soft bg-ancent py-2 px-4 rounded-tr-xl ">
+            <p className="absolute top-0 w-full h-full bg-[rgba(0,0,0,.4)] flex justify-center items-center left-0 text-lg md:text-2xl backdrop-blur-[1px] font-bold text-soft">
               {category.name}
             </p>
           </div>
