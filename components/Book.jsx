@@ -1,16 +1,11 @@
 import Image from "next/image";
-import { useState } from "react";
 
 const Symble = () => <span>৳</span>;
 
 const Book = ({ data }) => {
-  const [cardHover, setCardHover] = useState(false);
   return (
     <article
-      className={`flex flex-col font-bangla shadow-md rounded-lg p-2 hover:-translate-y-3 transition-all ${
-        cardHover && "hover:-translate-y-2 hover:shadow-2xl"
-      } `}
-      onMouseOver={() => setCardHover(true)}
+      className={`flex flex-col font-bangla shadow-md rounded-xl p-2 px-3 transition-all lg:hover:-translate-y-2 lg:hover:shadow-2xl`}
     >
       <Image
         src={data.imgUrl}

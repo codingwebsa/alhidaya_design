@@ -34,22 +34,19 @@ span:has(svg) {
 .nav {
   box-shadow: rgba(50, 50, 93, 25) 0 50px 100px -20px;
 }
-/* .BOOKSEC {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 0.5rem;
-  place-items: center;
-} */
 .BOOKSEC {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.5rem;
+  /* place-items: center; */
+  justify-content: center;
 }
-.BOOKSEC > article {
+
+/* .BOOKSEC > article {
   flex: 1 1 140px;
   max-width: 180px;
   margin: 0 auto;
-}
+} */
 
 .HOMECATEGORY {
   display: grid;
