@@ -44,6 +44,7 @@ const BookPage = ({ data }) => {
               blurDataURL={data.imgUrl}
               className="shadow-2xl rounded-2xl"
               quality={25}
+              alt={data.name}
             />
           </div>
 
@@ -89,7 +90,7 @@ const BookPage = ({ data }) => {
               <div className="mt-5 font-medium text-md">
                 {readmore
                   ? data.description
-                  : data.description.substring(0, 200)}{" "}
+                  : data.description.substring(0, 400)}{" "}
                 <span onClick={() => setReadmore(!readmore)}>
                   {readmore ? "...Show less" : "...Read More"}
                 </span>

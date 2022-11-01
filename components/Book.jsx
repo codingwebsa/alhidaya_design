@@ -15,6 +15,7 @@ const Book = ({ data }) => {
           height={175}
           objectFit="cover"
           className="rounded-lg drop-shadow-md"
+          alt={data.name}
         />
         <h2 className="max-w-[140px] break-words text-md my-2 font-semibold font-title">
           {data.name}

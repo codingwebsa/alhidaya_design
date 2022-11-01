@@ -35,18 +35,19 @@ const Banner = () => {
       swipeable
       infinite
       draggable
+      ssr
     >
       <div className="mx-1 rounded-md overflow-hidden">
-        <Image src={Banner1} />
+        <Image alt="banner1" src={Banner1} />
       </div>
       <div className="mx-1 rounded-md overflow-hidden">
-        <Image src={Banner2} />
+        <Image alt="banner2" src={Banner2} />
       </div>
       <div className="mx-1 rounded-md overflow-hidden">
-        <Image src={Banner3} />
+        <Image alt="banner3" src={Banner3} />
       </div>
       <div className="mx-1 rounded-md overflow-hidden">
-        <Image src={Banner4} />
+        <Image alt="banner4" src={Banner4} />
       </div>
     </Carousel>
   );

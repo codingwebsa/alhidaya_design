@@ -20,7 +20,7 @@ const Header = () => {
           <Link href={"/"} className="flex items-center gap-2">
             {/* <p className="text-ancent text-xl font-bold">Alhidaya</p> */}
             <span className="flex gap-2 items-center">
-              <Image src="/favicon.ico" width={30} height={30} />
+              <Image src="/favicon.ico" width={30} height={30} alt="favicon" />
               <p className="text-xl font-extrabold font-bangla">আল হিদায়া</p>
             </span>
           </Link>
@@ -84,7 +84,12 @@ const Header = () => {
           </div>
 
           <Link href={"/"} className="flex items-center gap-2">
-            <Image src={AlhidayaLogo} width={120} objectFit="contain" />
+            <Image
+              src={AlhidayaLogo}
+              alt="logo"
+              width={120}
+              objectFit="contain"
+            />
           </Link>
 
           <div className="relative">
