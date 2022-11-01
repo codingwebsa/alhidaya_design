@@ -10,7 +10,7 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 const Symble = () => <span>৳</span>;
 
 const BookPage = ({ data }) => {
-  const { setIsCartOpen, isCartOpen } = useContext(GlobalContext);
+  const { setIsCartOpen,addToCart, isCartOpen } = useContext(GlobalContext);
   const [readmore, setReadmore] = useState(false);
   const router = useRouter();
 
@@ -97,11 +97,11 @@ const BookPage = ({ data }) => {
                   {readmore ? "...Show less" : "...Read More"}
                 </span>
               </div>
-              <button className="w-full mx-2 flex items-center justify-center gap-1 my-8 mb-10 bg-gradient-to-tr from-emerald-400 to-green-500 text-gray-50 rounded-full py-2">
+              <button className="w-full md:w-60 md:rounded-lg mx-2 flex items-center justify-center gap-1 my-8 mb-10 bg-gradient-to-tr from-emerald-400 to-green-500 text-gray-50 rounded-full py-2" onClick={()=> addToCart(data)}>
                 <span>
-                  <MdShoppingBasket size={30} />
+                  <MdShoppingBasket size={25} />
                 </span>
-                <p className="text-xl">Add to Cart</p>
+                <p className="text-lg">Add to Cart</p>
               </button>
             </div>
           </div>

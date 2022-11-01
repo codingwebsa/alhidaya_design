@@ -9,22 +9,22 @@ const HomeCategory = () => {
     {
       name: "সাহিত্য",
       imgURL: Category1,
-      blurURL: "/Category1",
+      blurURL: "/Category1.webp",
     },
     {
       name: "ইসলামিক",
       imgURL: Category2,
-      blurURL: "/Category2",
+      blurURL: "/Category2.webp",
     },
     {
       name: "ইতিহাস",
       imgURL: Category3,
-      blurURL: "/Category3",
+      blurURL: "/Category3.webp",
     },
     {
       name: "নবী",
       imgURL: Category4,
-      blurURL: "/Category4",
+      blurURL: "/Category4.webp",
     },
   ];
   return (

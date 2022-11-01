@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useContext, useState } from "react";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { RiRefreshFill } from "react-icons/ri";
@@ -8,30 +9,7 @@ import CartItem from "./CartItem";
 const CartContainer = () => {
   const [flag, setFlag] = useState(1);
   const [tot, setTot] = useState(0);
-  const { setIsCartOpen } = useContext(GlobalContext);
-
-  const items = [
-    {
-      title: "Abar Vinno Kisu Hok",
-      imageURL: "https://media.graphassets.com/RbG1mJFjSMaccLzUad7F",
-      price: 390,
-    },
-    {
-      title: "Sirat",
-      imageURL: "https://media.graphassets.com/aREn4VA3S3adSsSUIHoQ",
-      price: 280,
-    },
-    {
-      title: "Amar Nobi",
-      imageURL: "https://media.graphassets.com/9GujCa4FTPmmDKsYZXEp",
-      price: 120,
-    },
-    {
-      title: "The Caring Wifes",
-      imageURL: "https://media.graphassets.com/jNsONhqERbKKvct7YfZF",
-      price: 330,
-    },
-  ];
+  const { setIsCartOpen, cartItems, setCartItems } = useContext(GlobalContext);
 
   return (
     <>
@@ -47,55 +25,58 @@ const CartContainer = () => {
           </div>
           <p className="text-textColor text-lg font-semibold">Cart</p>
 
-          <p className="flex items-center gap-2 p-1 px-2 my-2 bg-gray-100 rounded-md hover:shadow-md  cursor-pointer text-textColor text-base">
+          <p
+            className="flex items-center gap-2 p-1 px-2 my-2 bg-gray-100 rounded-md hover:shadow-md  cursor-pointer text-textColor text-base"
+            onClick={() => setCartItems([])}
+          >
             Clear <RiRefreshFill />
           </p>
         </div>
 
         {/* bottom section */}
-        <div className="w-full h-full bg-cartBg rounded-t-[2rem] flex flex-col">
-          {/* cart Items section */}
-          <div className="w-full h-340 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-hide">
-            {/* cart Item */}
-            {items.map((item, i) => (
-              <CartItem key={i} item={item} setFlag={setFlag} flag={flag} />
-            ))}
+        {cartItems.length > 0 ? (
+          <div className="w-full h-full bg-cartBg rounded-t-[2rem] flex flex-col">
+            <div className="w-full h-340 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-hide">
+              {cartItems.map((item, i) => (
+                <CartItem key={i} item={item} setFlag={setFlag} flag={flag} />
+              ))}
+            </div>
+
+            <div className="w-full flex-1 bg-cartTotal rounded-t-[2rem] flex flex-col items-center justify-evenly px-8 py-2">
+              <div className="w-full flex items-center justify-between">
+                <p className="text-gray-400 text-lg">Sub Total</p>
+                <p className="text-gray-400 text-lg">$ {tot}</p>
+              </div>
+              <div className="w-full flex items-center justify-between">
+                <p className="text-gray-400 text-lg">Delivery</p>
+                <p className="text-gray-400 text-lg">$ 2.5</p>
+              </div>
+
+              <div className="w-full border-b border-gray-600 my-2"></div>
+
+              <div className="w-full flex items-center justify-between">
+                <p className="text-gray-200 text-xl font-semibold">Total</p>
+                <p className="text-gray-200 text-xl font-semibold">
+                  ${tot + 2.5}
+                </p>
+              </div>
+
+              <button
+                type="button"
+                className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg"
+              >
+                Check Out
+              </button>
+            </div>
           </div>
-
-          {/* cart total section */}
-          <div className="w-full flex-1 bg-cartTotal rounded-t-[2rem] flex flex-col items-center justify-evenly px-8 py-2">
-            <div className="w-full flex items-center justify-between">
-              <p className="text-gray-400 text-lg">Sub Total</p>
-              <p className="text-gray-400 text-lg">$ {tot}</p>
-            </div>
-            <div className="w-full flex items-center justify-between">
-              <p className="text-gray-400 text-lg">Delivery</p>
-              <p className="text-gray-400 text-lg">$ 2.5</p>
-            </div>
-
-            <div className="w-full border-b border-gray-600 my-2"></div>
-
-            <div className="w-full flex items-center justify-between">
-              <p className="text-gray-200 text-xl font-semibold">Total</p>
-              <p className="text-gray-200 text-xl font-semibold">
-                ${tot + 2.5}
-              </p>
-            </div>
-
-            <button
-              type="button"
-              className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg"
-            >
-              Check Out
-            </button>
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center gap-6">
+            <Image width={300} src={EmptyCart} className="w-300" alt="" />
+            <p className="text-xl text-textColor font-semibold">
+              Add some items to your cart
+            </p>
           </div>
-        </div>
-        {/* <div className="w-full h-full flex flex-col items-center justify-center gap-6">
-          <img src={EmptyCart} className="w-300" alt="" />
-          <p className="text-xl text-textColor font-semibold">
-            Add some items to your cart
-          </p>
-        </div> */}
+        )}
       </div>
     </>
   );

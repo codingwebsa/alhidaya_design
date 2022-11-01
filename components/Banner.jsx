@@ -30,12 +30,13 @@ const Banner = () => {
   return (
     <Carousel
       responsive={responsive}
-      removeArrowOnDeviceType={["tablet", "mobile"]}
+      // removeArrowOnDeviceType={["tablet", "mobile"]}
       autoPlay
       swipeable
       infinite
       draggable
       ssr
+      arrows={false}
     >
       <div className="mx-1 rounded-md overflow-hidden">
         <Image alt="banner1" src={Banner1} />

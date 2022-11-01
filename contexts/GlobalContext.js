@@ -1,10 +1,12 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 export const GlobalContext = createContext({})
 
 export const GlobalContextProvider= ({children})=>{
     const [isCartOpen, setIsCartOpen] = useState(false);
-    const data = [
+    const [cartItems, setCartItems] = useState([])
+
+    const bookdata = [
         {
           name: "পাপ করব না আর",
           slug: 'pup-korbona-ar',
@@ -114,8 +116,10 @@ export const GlobalContextProvider= ({children})=>{
             "একবার নবীজির চাচাতো ভাই আব্দুল্লাহ ইবনু আব্বাস (রাযি.)-কে এক ব্যক্তি জিজ্ঞেস করল, ‘ধরুন কেউ কম পাপ করে, আবার নেকিও করে কম। আরেক ব্যক্তি পাপ করে বেশি, আবার নেকিও বেশি করে—এদের দুজনের মধ্যে কে বেশি উত্তম? ইবনু আব্বাস প্রশ্ন শুনে বললেন, ‘আমি কোনো কিছুকে (পাপ থেকে) বেঁচে থাকার মতো উত্তম মনে করি না’ অর্থাৎ পাপ থেকে বেঁচে থাকা এমন আমল, যার বরাবর অন্য কোনো আমল হতে পারে না। এজন্য পূর্বসুরিগণ এর গুরুত্ব বোঝাতে গিয়ে বলতেন, ‘দিনের বেলা আল্লাহকে (শতভাগ ভাগ) ভয় করো এবং পুরো রাত (তাহাজ্জুদ না পড়ে) ঘুমিয়ে থাকো (সমস্যা নেই)।’পাপ থেকে বেঁচে থাকার অনুপ্রেরণা নিয়ে মুফতি মুহাম্মদ শুয়াইবুল্লাহ খানের দরদ মাখা অনবদ্য কাজ—’পাপ করব না আর’। পাপ থেকে বেঁচে থাকার সকল পন্থা এখানে লেখক আলোচনা করেছেন। উন্মাদ হয়ে গুনাহের সামুদ্রে হাবুডুবু খাওয়া উম্মতের জন্য একটি উপকারী বই।",
         },
       ];
+
+      const addToCart = (newItem) => setCartItems([...cartItems, newItem])
     return (
-        <GlobalContext.Provider value={{isCartOpen, setIsCartOpen,bookdata: data}}>
+        <GlobalContext.Provider value={{isCartOpen, setIsCartOpen, bookdata, cartItems, setCartItems,addToCart}}>
             {children}
         </GlobalContext.Provider>
     )

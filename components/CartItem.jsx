@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { BiMinus, BiPlus } from "react-icons/bi";
-let items = [];
 
 const CartItem = ({ item, setFlag, flag }) => {
   const [qty, setQty] = useState(1);
+  console.log(item);
 
   return (
     <div className="w-full p-1 px-2 rounded-lg bg-cartItem flex items-center gap-2">
       <img
-        src={item?.imageURL}
+        src={item?.imgUrl}
         className="w-20 h-20 max-w-[60px] rounded-xl object-contain"
         alt=""
       />
