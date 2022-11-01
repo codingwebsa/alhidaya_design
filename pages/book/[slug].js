@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
-import { MdOutlineKeyboardBackspace, MdShoppingBasket } from "react-icons/md";
+import { MdShoppingBasket } from "react-icons/md";
+import Navbar from "../../components/Navbar";
 import CartContainer from "../../components/CartContainer";
 import { GlobalContext } from "../../contexts/GlobalContext";
 
@@ -12,11 +13,11 @@ const BookPage = ({ data }) => {
   const { setIsCartOpen, isCartOpen } = useContext(GlobalContext);
   const [readmore, setReadmore] = useState(false);
   const router = useRouter();
-  console.log(data);
 
   return (
     <>
-      <nav className="flex justify-between p-5 py-4">
+      <Navbar />
+      {/* <nav className="flex justify-between p-5 py-4">
         <span onClick={() => router.push("/")}>
           <MdOutlineKeyboardBackspace size={30} />
         </span>
@@ -29,10 +30,10 @@ const BookPage = ({ data }) => {
             <p className="text-xs text-white font-semibold">0</p>
           </div>
         </div>
-      </nav>
+      </nav> */}
       <main className="relative pb-5 font-alhidaya">
         <div className="flex flex-col gap-4 md:flex-row">
-          <div className="flex justify-center items-center w-full md:h-max md:ml-10 md:w-max md:m-4 md:mt-8">
+          <div className="flex justify-center items-center w-[90%] mx-auto md:h-max md:ml-10 md:w-max md:m-4 md:mt-8">
             <Image
               src={data.imgUrl}
               loader={() => data.imgUrl}
@@ -50,17 +51,15 @@ const BookPage = ({ data }) => {
 
           <div className="px-4 md:max-w-[60%] mt-8">
             {/* name */}
-            <h1 className="text-3xl md:4xl leading-[60px] font-bold">
-              {data.name}
-            </h1>
+            <h1 className="text-3xl md:text-4xl mb-4 ">{data.name}</h1>
 
             {/* price */}
             <div className="flex gap-2 items-baseline">
-              <span className="text-2xl text-light">
+              <span className="flex text-3xl text-light">
                 <Symble /> {data.price}
               </span>
               {data.discountPrice && (
-                <s className="text-gray-500 text-lg">
+                <s className="flex text-gray-500 text-lg">
                   <Symble /> {data.discountPrice}
                 </s>
               )}
@@ -68,33 +67,42 @@ const BookPage = ({ data }) => {
 
             {/* details */}
             <div className="flex flex-col mt-2">
-              <span className="text-md md:text-lg">
+              <span className="text-md md:text-xl flex gap-1 items-center w-max">
                 <span className="font-medium">লেখক: </span>
-                <Link href="/" className="text-blue-600 font-thin">
+                <Link href="/" className="text-blue-600 font-thin text-lg">
                   {data.author}
                 </Link>
               </span>
-              <span className="text-md md:text-lg">
+              <span className="text-md md:text-xl flex gap-1 items-center w-max">
                 <span className="font-medium">বিষয়: </span>
-                <Link href="/" className="text-blue-600 font-thin">
+                <Link href="/" className="text-blue-600 font-thin text-lg">
                   {data.category}
                 </Link>
               </span>
-              <span className="text-md md:text-lg">
+              <span className="text-md md:text-xl flex gap-1 items-center w-max">
                 <span className="font-medium">প্রকাশন: </span>
-                <Link href="/" className="text-blue-600 font-thin">
+                <Link href="/" className="text-blue-600 font-thin text-lg">
                   আল-হিদায়া
                 </Link>
               </span>
               {/* description */}
-              <div className="mt-5 font-medium text-md">
+              <div className="mt-5 font-medium text-md md:max-w-[80%]">
                 {readmore
                   ? data.description
                   : data.description.substring(0, 400)}{" "}
-                <span onClick={() => setReadmore(!readmore)}>
+                <span
+                  className="font-bold cursor-pointer"
+                  onClick={() => setReadmore(!readmore)}
+                >
                   {readmore ? "...Show less" : "...Read More"}
                 </span>
               </div>
+              <button className="w-full mx-2 flex items-center justify-center gap-1 my-8 mb-10 bg-gradient-to-tr from-emerald-400 to-green-500 text-gray-50 rounded-full py-2">
+                <span>
+                  <MdShoppingBasket size={30} />
+                </span>
+                <p className="text-xl">Add to Cart</p>
+              </button>
             </div>
           </div>
         </div>

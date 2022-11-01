@@ -54,10 +54,10 @@ const Header = () => {
             <div className="relative">
               <Image
                 src={Avatar}
-                className="w-5 min-w-[20px] h-5 min-h-[20px] cursor-pointer rounded-full"
+                className="w-8 min-w-[20px] h-8 min-h-[20px] cursor-pointer rounded-full"
                 alt="userprofile"
-                width={40}
-                height={40}
+                width={50}
+                height={50}
                 onClick={() => setIsMenu(!isMenu)}
               />
               {isMenu && (

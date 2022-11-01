@@ -9,18 +9,22 @@ const HomeCategory = () => {
     {
       name: "সাহিত্য",
       imgURL: Category1,
+      blurURL: "/Category1",
     },
     {
       name: "ইসলামিক",
       imgURL: Category2,
+      blurURL: "/Category2",
     },
     {
       name: "ইতিহাস",
       imgURL: Category3,
+      blurURL: "/Category3",
     },
     {
       name: "নবী",
       imgURL: Category4,
+      blurURL: "/Category4",
     },
   ];
   return (
@@ -31,8 +35,10 @@ const HomeCategory = () => {
           <div className="relative flex rounded-xl overflow-hidden" key={i}>
             <Image
               src={category.imgURL}
-              alt={data.name}
-              className="rounded-xl"
+              alt={category.name}
+              blurDataURL={category.blurURL}
+              placeholder="blur"
+              className="rounded-xl object-cover"
               quality={50}
             />
             <p className="absolute top-0 w-full h-full bg-[rgba(0,0,0,.4)] flex justify-center items-center left-0 text-lg md:text-2xl backdrop-blur-[1px] font-bold text-soft">

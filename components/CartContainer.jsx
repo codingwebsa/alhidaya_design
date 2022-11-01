@@ -4,7 +4,6 @@ import { RiRefreshFill } from "react-icons/ri";
 import EmptyCart from "../assets/emptyCart.svg";
 import { GlobalContext } from "../contexts/GlobalContext";
 import CartItem from "./CartItem";
-import { motion } from "framer-motion";
 
 const CartContainer = () => {
   const [flag, setFlag] = useState(1);
@@ -36,7 +35,7 @@ const CartContainer = () => {
 
   return (
     <>
-      <motion.div
+      <div
         className="fixed top-0 right-0 w-full md:w-375 h-screen bg-white drop-shadow-md flex flex-col z-[101]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -97,7 +96,7 @@ const CartContainer = () => {
             Add some items to your cart
           </p>
         </div> */}
-      </motion.div>
+      </div>
     </>
   );
 };
