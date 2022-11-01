@@ -66,7 +66,8 @@ module.exports = {
       fontFamily: {
         'nunito': ['nunito'],
         'bangla': ['Bangla Font'],
-        'title': ['Title Font']
+        'title': ['Title Font'],
+        'alhidaya': ['alhidaya']
       }
     },
   },

@@ -19,7 +19,7 @@ const Book = ({ data }) => {
         <h2 className="max-w-[140px] break-words text-md my-2 font-semibold font-title">
           {data.name}
         </h2>
-        <span className="text-xs text-main text-left w-max line-clamp-1 leading-6 rounded-full font-medium">
+        <span className="text-xs text-gray-500 text-left w-max line-clamp-1 leading-6 rounded-full font-medium">
           {data.author.length > 25
             ? data.author.substring(0, 25) + "..."
             : data.author}

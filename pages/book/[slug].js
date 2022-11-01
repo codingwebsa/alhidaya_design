@@ -6,15 +6,18 @@ import { MdOutlineKeyboardBackspace, MdShoppingBasket } from "react-icons/md";
 import CartContainer from "../../components/CartContainer";
 import { GlobalContext } from "../../contexts/GlobalContext";
 
+const Symble = () => <span>৳</span>;
+
 const BookPage = ({ data }) => {
   const { setIsCartOpen, isCartOpen } = useContext(GlobalContext);
   const [readmore, setReadmore] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
+  console.log(data);
 
   return (
     <>
       <nav className="flex justify-between p-5 py-4">
-        <span onClick={()=> router.push('/')}>
+        <span onClick={() => router.push("/")}>
           <MdOutlineKeyboardBackspace size={30} />
         </span>
         <div
@@ -27,56 +30,70 @@ const BookPage = ({ data }) => {
           </div>
         </div>
       </nav>
-      <main className="relative w-full flex justify-center py-2 pb-20">
-        <div className="flex flex-col items-center gap-8">
-          <div className="relative w-full h-420 rounded-lg overflow-hidden shadow-xl">
+      <main className="relative pb-5 font-alhidaya">
+        <div className="flex flex-col gap-4 md:flex-row">
+          <div className="flex justify-center items-center w-full md:h-max md:ml-10 md:w-max md:m-4 md:mt-8">
             <Image
               src={data.imgUrl}
+              loader={() => data.imgUrl}
               layout="fill"
               objectFit="cover"
+              width={400}
+              height={600}
               placeholder="blur"
               blurDataURL={data.imgUrl}
-              className='rounded-lg'
+              className="shadow-2xl rounded-2xl"
               quality={25}
             />
           </div>
-          <div className="max-w-[90%] flex flex-col">
-            <span className="text-3xl mb-4">{data.name}</span>
-            {data.discountPrice ? (
-              <span className="flex gap-2 text-2xl">
-                ৳ {data.discountPrice}
-                <span>
-                  <s className="text-xl">৳ {data.price}</s>
+
+          <div className="px-4 md:max-w-[60%] mt-8">
+            {/* name */}
+            <h1 className="text-3xl md:4xl leading-[60px] font-bold">
+              {data.name}
+            </h1>
+
+            {/* price */}
+            <div className="flex gap-2 items-baseline">
+              <span className="text-2xl text-light">
+                <Symble /> {data.price}
+              </span>
+              {data.discountPrice && (
+                <s className="text-gray-500 text-lg">
+                  <Symble /> {data.discountPrice}
+                </s>
+              )}
+            </div>
+
+            {/* details */}
+            <div className="flex flex-col mt-2">
+              <span className="text-md md:text-lg">
+                <span className="font-medium">লেখক: </span>
+                <Link href="/" className="text-blue-600 font-thin">
+                  {data.author}
+                </Link>
+              </span>
+              <span className="text-md md:text-lg">
+                <span className="font-medium">বিষয়: </span>
+                <Link href="/" className="text-blue-600 font-thin">
+                  {data.category}
+                </Link>
+              </span>
+              <span className="text-md md:text-lg">
+                <span className="font-medium">প্রকাশন: </span>
+                <Link href="/" className="text-blue-600 font-thin">
+                  আল-হিদায়া
+                </Link>
+              </span>
+              {/* description */}
+              <div className="mt-5 font-medium text-md">
+                {readmore
+                  ? data.description
+                  : data.description.substring(0, 200)}{" "}
+                <span onClick={() => setReadmore(!readmore)}>
+                  {readmore ? "...Show less" : "...Read More"}
                 </span>
-              </span>
-            ) : (
-              <span>{data.price}</span>
-            )}
-            <span className="font-medium">
-              লেখক: <Link href={`/`}>{data.author}</Link>
-            </span>
-            <span className="font-medium">
-              প্রকাশনায়: <Link href={`/`}>ওয়াফি পাবলিকেশন</Link>
-            </span>
-            <span className="font-medium">
-              বিষয়: <Link href={`/`}>{data.category}</Link>
-            </span>
-            <span className="font-medium">
-              {readmore ? data.excerpt : data.description.slice(0, 200)}
-              <span
-                onClick={() => setReadmore(!readmore)}
-                style={{ fontWeight: "bold", cursor: "pointer" }}
-              >
-                {readmore ? "...show less" : "...Read More"}
-              </span>
-            </span>
-            <div className="">
-              <div className="">
-                <span>-</span> 1 <span>+</span>
               </div>
-              <button class="" role="button">
-                Add To Cart
-              </button>
             </div>
           </div>
         </div>

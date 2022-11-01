@@ -19,6 +19,10 @@
   src: url("../assets//font/font-two.ttf");
   font-family: "Title Font";
 }
+@font-face {
+  src: url("../assets//font/banglaFont.ttf");
+  font-family: "alhidaya";
+}
 body {
   color: var(--ancent);
   overflow-x: hidden;
